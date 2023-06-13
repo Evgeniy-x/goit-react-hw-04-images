@@ -29,7 +29,7 @@ const Spin = () => {
       color="black"
       ariaLabel="tail-spin-loading"
       radius="3"
-      wrapperStyle={{ display: 'inline' }}
+      wrapperStyle={{}}
       wrapperClass={css.tailSpin}
       visible={true}
     />
