@@ -12,21 +12,16 @@ const ImageGalleryItem = ({ id, src, largeURL, handleState }) => {
   };
 
   return (
-    <>
-      <li
-        className={css.imageGalleryItem}
-        onClick={() => handleState(largeURL)}
-      >
-        {load ? <Spin /> : null}
-        <img
-          style={{ display: `${display}` }}
-          className={css.imageGalleryItemImage}
-          src={src}
-          alt={id}
-          onLoad={loading}
-        />
-      </li>
-    </>
+    <li className={css.imageGalleryItem} onClick={() => handleState(largeURL)}>
+      {load ? <Spin /> : null}
+      <img
+        style={{ display: `${display}` }}
+        className={css.imageGalleryItemImage}
+        src={src}
+        alt={id}
+        onLoad={loading}
+      />
+    </li>
   );
 };
 
