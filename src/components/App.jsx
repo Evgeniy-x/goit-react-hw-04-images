@@ -17,8 +17,6 @@ export function App() {
     if (name === '') {
       return;
     }
-    console.log(page);
-    console.log(name);
 
     onChangeLoader(true);
     fetchPixabay(name, 1)
@@ -28,7 +26,7 @@ export function App() {
       })
       .catch(error => console.log(error))
       .finally(() => setLoader(false));
-  }, [name]);
+  }, [name, page]);
 
   const addName = findName => {
     setName(findName);
