@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, createContext } from 'react';
 import fetchPixabay from '../services/pixabay-api';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Button from './Button/Button';
 import Loader from './Loader/Loader';
+
+export const MyContext = createContext({ defaultValue: '' });
 
 export function App() {
   const [name, setName] = useState('');
@@ -26,7 +27,7 @@ export function App() {
       })
       .catch(error => console.log(error))
       .finally(() => setLoader(false));
-  }, [name, page]);
+  }, [name]);
 
   const addName = findName => {
     setName(findName);
@@ -48,10 +49,10 @@ export function App() {
   };
 
   return (
-    <>
+    <MyContext.Provider value={images}>
       <Searchbar onSubmit={addName} changePage={changePage}></Searchbar>
 
-      <ImageGallery images={images} />
+      <ImageGallery />
       {loader ? <Loader /> : null}
       {!(images.length === totalImg) ? (
         <Button
@@ -64,6 +65,6 @@ export function App() {
           onAddImg={onAddImg}
         />
       ) : null}
-    </>
+    </MyContext.Provider>
   );
 }

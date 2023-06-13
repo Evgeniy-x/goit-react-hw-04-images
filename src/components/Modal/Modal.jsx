@@ -11,14 +11,10 @@ function Modal({ children, onClose }) {
 
     return () => window.removeEventListener('keydown', handleKeyDown);
   });
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('keydown', handleKeyDown);
-  // }
-
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
       onClose();
+      console.log('Клацаєм');
     }
   };
 

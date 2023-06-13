@@ -1,12 +1,16 @@
 import css from './ImageGallery.module.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import ImageGalleryItem from './ImageGalleryItem';
 import Modal from '../Modal/Modal';
 import PropTypes from 'prop-types';
 
-function ImageGallery({ images }) {
+import { MyContext } from '../App';
+
+function ImageGallery() {
   const [srcLarge, setSrcLarge] = useState('');
   const [showModal, setShowModal] = useState(false);
+
+  const images = useContext(MyContext);
 
   const addLargeURL = largeUrl => {
     setSrcLarge(largeUrl);
@@ -41,5 +45,5 @@ function ImageGallery({ images }) {
 export default ImageGallery;
 
 ImageGallery.propTypes = {
-  images: PropTypes.array.isRequired,
+  images: PropTypes.array,
 };
