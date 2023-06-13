@@ -10,7 +10,7 @@ function Modal({ children, onClose }) {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  });
 
   // componentWillUnmount() {
   //   window.removeEventListener('keydown', handleKeyDown);
